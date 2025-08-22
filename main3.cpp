@@ -1,24 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-constexpr int num = 104;
-int grid[num][num];
-int visited[num][num];
-int n, m;
+const int safe = 104;
+
 int dy[4] = {-1, 0, 1, 0};
 int dx[4] = {0, 1, 0, -1};
 
+int n, m, startN, startM, endN, endM;
+int visited[safe][safe];
+int grid[safe][safe];
 
-void result(int y, int x) {
+void BFS(int y, int x) {
     queue<pair<int, int> > q;
     visited[y][x] = 1;
     q.push(make_pair(y, x));
 
     while (q.size()) {
-
         tie(y, x) = q.front();
         q.pop();
-
         for (int i = 0; i < 4; i++) {
             int ny = y + dy[i];
             int nx = x + dx[i];
@@ -27,25 +26,25 @@ void result(int y, int x) {
             if (visited[ny][nx]) continue;
 
             visited[ny][nx] = visited[y][x] + 1;
-            q.push({ny, nx});  // ★ 새로운 좌표를 넣어야 함!
+            q.push({ny, nx});
         }
     }
-    return;
 }
 
 int main() {
     cin >> n >> m;
+    cin >> startN >> startM;
+    cin >> endN >> endM;
+
     for (int i = 0; i < n; i++) {
-        string row;
-        cin >> row;  // 한 줄을 문자열로 읽기
         for (int j = 0; j < m; j++) {
-            grid[i][j] = row[j] - '0';  // 문자를 숫자로 변환
+            cin >> grid[i][j];
         }
     }
 
-    result(0, 0);
+    BFS(startN, startM);  // y좌표(행)가 먼저, x좌표(열)가 나중
 
-    cout << visited[n][m]  << endl;
+    cout << visited[endN][endM] - 1 << endl;
 
     return 0;
 }

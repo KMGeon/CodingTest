@@ -45,7 +45,7 @@ int main() {
 
     result(0, 0);
 
-    cout << visited[n][m]  << endl;
+    cout << visited[n-1][m-1]  << endl;
 
     return 0;
 }

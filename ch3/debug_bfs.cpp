@@ -8,14 +8,12 @@ int n, m;
 int dy[4] = {-1, 0, 1, 0};
 int dx[4] = {0, 1, 0, -1};
 
-
 void result(int y, int x) {
     queue<pair<int, int> > q;
     visited[y][x] = 1;
     q.push(make_pair(y, x));
 
     while (q.size()) {
-
         tie(y, x) = q.front();
         q.pop();
 
@@ -27,7 +25,7 @@ void result(int y, int x) {
             if (visited[ny][nx]) continue;
 
             visited[ny][nx] = visited[y][x] + 1;
-            q.push({ny, nx});  // ★ 새로운 좌표를 넣어야 함!
+            q.push({ny, nx});
         }
     }
     return;
@@ -37,15 +35,13 @@ int main() {
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
         string row;
-        cin >> row;  // 한 줄을 문자열로 읽기
+        cin >> row;
         for (int j = 0; j < m; j++) {
-            grid[i][j] = row[j] - '0';  // 문자를 숫자로 변환
+            grid[i][j] = row[j] - '0';
         }
     }
 
     result(0, 0);
-
-    cout << visited[n][m]  << endl;
-
+    cout << visited[n-1][m-1] << endl;
     return 0;
 }
