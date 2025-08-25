@@ -24,7 +24,7 @@ void dfs(int y, int x, int height) {
     }
 }
 
-int main() {
+int main() {1
     cin >> num;
 
     int maxHeight = 0;
