@@ -41,3 +41,7 @@ int main() {
 
     return 0;
 }
+
+/**
+ *  여기서 if (mp_first[a[i]] == 0) map 체크하는 로직 학습
+ */
