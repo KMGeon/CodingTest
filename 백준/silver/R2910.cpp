@@ -38,6 +38,5 @@ int main() {
             cout << i.second << " ";
         }
     }
-
     return 0;
 }
