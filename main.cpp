@@ -1,29 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-char v[5] = {'a', 'e', 'i', 'o', 'u'}; // 모음 배열
-string long_vowels[2] = {"ee", "oo"}; // 긴 모음
-stack<char> s;
+int n;
+vector<string> v;
+string s, ret;
+
+void go() {
+
+}
+
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
 
-    string str; // string 변수 선언
-    char ch[str.length()]; // char 배열 선언
+    cin >> n;
 
-    getline(cin, str);
-    strcpy(ch, str.c_str());
-
-
-    for (int i = 0; i < str.length(); i++) {
-        if (s.empty()) {
-            s.push(ch[i]);
+    for (int i = 0; i < n; i++) {
+        cin >> s;
+        ret = "";
+        for (int j = 0; j < s.size(); j++) {
+            if (s[j] < 65) {
+                ret += s[j];
+            } else if (ret.size()) {
+                go();
+            }
         }
-
-
+        if (ret.size()) {
+            go();
+        }
     }
 
-
+    sort(v.begin(), v.end());
+    for (string i:v) cout << i << endl;
     return 0;
 }
+
+
+/**
+ int : 10글자
+ longlong 19글자
+
+ a : 97
+ A: 65
+ */
