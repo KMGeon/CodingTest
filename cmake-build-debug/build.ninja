@@ -56,13 +56,6 @@ build CMakeFiles/CodingTest.dir/main.cpp.o: CXX_COMPILER__CodingTest_unscanned_D
   OBJECT_DIR = CMakeFiles/CodingTest.dir
   OBJECT_FILE_DIR = CMakeFiles/CodingTest.dir
 
-build CMakeFiles/CodingTest.dir/dfs-bfs/격자.cpp.o: CXX_COMPILER__CodingTest_unscanned_Debug /Users/mugeon/CLionProjects/CodingTest/dfs-bfs/격자.cpp || cmake_object_order_depends_target_CodingTest
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/CodingTest.dir/dfs-bfs/격자.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/CodingTest.dir
-  OBJECT_FILE_DIR = CMakeFiles/CodingTest.dir/dfs-bfs
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CodingTest
@@ -71,7 +64,7 @@ build CMakeFiles/CodingTest.dir/dfs-bfs/격자.cpp.o: CXX_COMPILER__CodingTest_u
 #############################################
 # Link the executable CodingTest
 
-build CodingTest: CXX_EXECUTABLE_LINKER__CodingTest_Debug CMakeFiles/CodingTest.dir/main.cpp.o CMakeFiles/CodingTest.dir/dfs-bfs/격자.cpp.o
+build CodingTest: CXX_EXECUTABLE_LINKER__CodingTest_Debug CMakeFiles/CodingTest.dir/main.cpp.o
   CONFIG = Debug
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk
   LINK_FLAGS = -L/opt/homebrew/opt/mysql-client/lib

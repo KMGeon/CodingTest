@@ -1,8 +1,10 @@
 {
-  "outputStyle": "Learning",
   "permissions": {
     "allow": [
-      "Bash(cmake:*)"
+      "Bash(cmake:*)",
+      "Bash(clang++:*)",
+      "WebFetch(domain:school.programmers.co.kr)"
     ]
-  }
+  },
+  "outputStyle": "Learning"
 }
