@@ -3,7 +3,10 @@
     "allow": [
       "Bash(cmake:*)",
       "Bash(clang++:*)",
-      "WebFetch(domain:school.programmers.co.kr)"
+      "WebFetch(domain:school.programmers.co.kr)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)"
     ]
   },
   "outputStyle": "Learning"
