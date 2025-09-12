@@ -1,55 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int n, ret;
-int grid[30][30], visited[30][30];
-const int dy[] = {-1, 0, 1, 0}, dx[] = {0, 1, 0, -1};
-vector<int> complexSizes;
+int n, m, v;
+vector<int> adj[1004];
+bool visited[1004];
 
+void go(int here) {
+    visited[here] = true;
+    cout << here << " ";  // endl 대신 공백
 
-bool check(int y, int x) {
-    return grid[y][x] == 1 && !visited[y][x];
-}
-
-int go(int y, int x) {
-    int rtn = 1;
-    visited[y][x] = 1;
-    for (int i=0; i<4;i++) {
-        int ny = y + dy[i];
-        int nx = x + dx[i];
-
-        if (ny < 0 || ny >= n || nx < 0 || nx >= n || visited[ny][nx]) continue;
-        if (grid[ny][nx] == 0) continue;
-        rtn += go(ny, nx);
+    for (int x : adj[here]) {
+        if (visited[x]) continue;
+        go(x);
     }
-    return rtn;
+    return;
 }
 
 int main() {
-    cin >> n;
+    cin >> n >> m >> v;
 
-    for (int i = 0; i < n; i++) {
-        string row;
-        cin >> row;
-        for (int j = 0; j < n; j++) {
-            grid[i][j] = row[j] - '0';
-        }
+    for (int i = 0; i < m; i++) {
+        int x, y;
+        cin >> x >> y;
+        adj[x].push_back(y);
+        adj[y].push_back(x);
     }
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (check(i, j)) {
-                int rtn = go(i, j);
-                complexSizes.push_back(rtn);
-                ret ++;
-            }
-        }
+    // 작은 번호부터 방문하기 위해 정렬
+    for (int i = 1; i <= n; i++) {
+        sort(adj[i].begin(), adj[i].end());
     }
 
-    sort(complexSizes.begin(), complexSizes.end());
-    cout << ret << endl;
-    for (int size : complexSizes) {
-        cout << size << endl;
-    }
+    go(v);
+    cout << "\n";  // 마지막에 줄바꿈 한 번만
+
     return 0;
 }
