@@ -2,7 +2,8 @@
 using namespace std;
 int n, m, a[54][54], result = 987654321;
 vector<vector<int>>chickenList;
-vector<pair<int, int>> _home, chicken;
+vector<pair<int, int>> _home, _chicken;
+
 void combi(int start, vector<int> v){
     if(v.size() == m){
         chickenList.push_back(v);
