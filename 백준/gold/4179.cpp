@@ -35,7 +35,7 @@ int main() {
         for (int i = 0; i < 4; i++) {
             int ny = y + dy[i];
             int nx = x + dx[i];
-            if (!in(ny, nx)) continue;
+            if (!in(ny, nx)) continue; // over flow 페크
             if (fire_check[ny][nx] != INF || a[ny][nx] == '#') continue;
             fire_check[ny][nx] = fire_check[y][x] + 1;
             q.push({ny, nx});
@@ -48,16 +48,24 @@ int main() {
         int y = q.front().first;
         int x = q.front().second;
         q.pop();
+
+        // 가장자리에 도착하면 빠져나온다.
         if (x == m - 1 || y == n - 1 || x == 0 || y == 0) {
             ret = person_check[y][x];
             break;
         }
+
+
         for (int i = 0; i < 4; i++) {
             int ny = y + dy[i];
             int nx = x + dx[i];
             if (!in(ny, nx)) continue;
-            if (person_check[ny][nx] || a[ny][nx] == '#') continue;
+            if (person_check[ny][nx] || a[ny][nx] == '#') continue; // 벽
+
+            // 조건
             if (fire_check[ny][nx] <= person_check[y][x] + 1) continue;
+
+
             person_check[ny][nx] = person_check[y][x] + 1;
             q.push({ny, nx});
         }
