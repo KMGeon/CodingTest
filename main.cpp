@@ -1,38 +1,23 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int n, m, v;
-vector<int> adj[1004];
-bool visited[1004];
-
-void go(int here) {
-    visited[here] = true;
-    cout << here << " ";  // endl 대신 공백
-
-    for (int x : adj[here]) {
-        if (visited[x]) continue;
-        go(x);
-    }
-    return;
-}
+int r, c;
+char grid[1004][1004], fire[1004][1004], person[1004][1004];
+int dy[4] = {-1, 0, 1, 0}, dx[4] = {0, 1, 0, -1};
 
 int main() {
-    cin >> n >> m >> v;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    for (int i = 0; i < m; i++) {
-        int x, y;
-        cin >> x >> y;
-        adj[x].push_back(y);
-        adj[y].push_back(x);
+    for (int i=0; i<r; i++) {
+        for (int j=0; j<c;j++) {
+            cin >> grid[i][j];
+
+
+
+        }
     }
-
-    // 작은 번호부터 방문하기 위해 정렬
-    for (int i = 1; i <= n; i++) {
-        sort(adj[i].begin(), adj[i].end());
-    }
-
-    go(v);
-    cout << "\n";  // 마지막에 줄바꿈 한 번만
 
     return 0;
 }

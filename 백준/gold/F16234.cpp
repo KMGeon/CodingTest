@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-int visited[54][54], a[54][54], n, l, r, sum, cnt;
+int visited[54][54], grid[54][54], n, l, r, sum, cnt;
 const int dy[]={-1,0,1,0};
 const int dx[] ={0,1,0,-1};
-vector<pair<int,int>>v;
+vector<pair<int,int>>unions;
 
 int dfs(int y, int x) {
     int population = grid[y][x];
@@ -28,7 +28,7 @@ int main(){
     cin>>n>>l>>r;
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
-            cin>>a[i][j];
+            cin>>grid[i][j];
         }
     }
     while(true){
@@ -39,21 +39,21 @@ int main(){
             for(int j=0; j<n; j++){
 
                 if(!visited[i][j]){
-                    v.clear();
+                    unions.clear();
                     visited[i][j] = 1;
-                    v.push_back({i,j});
-                    sum = a[i][j];
+                    unions.push_back({i,j});
+                    sum = grid[i][j];
 
 
                     dfs(i,j); // 연결된 모든 나라 찾기
 
                     // 연합이 1개 나라면 인구 이동 없음
-                    if(v.size() == 1) continue;
+                    if(unions.size() == 1) continue;
 
 
                     // 연합의 평균 인구로 업데이트
-                    for(pair<int,int> b : v){
-                        a[b.first][b.second] = sum / v.size();
+                    for(pair<int,int> b : unions){
+                        grid[b.first][b.second] = sum / unions.size();
                         flag = 1;
                     }
                 }
