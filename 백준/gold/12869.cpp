@@ -24,6 +24,7 @@ int solve(int a, int b, int c){
         q.pop();
         if(visited[0][0][0]) break;
         for(int i = 0; i < 6; i++){
+            // 음수가 되는 것을 막아준다. ( 배열에 음수에 인덱싱 할 수 없다. )
             int na = max(0, a - _a[i][0]);
             int nb = max(0, b - _a[i][1]);
             int nc = max(0, c - _a[i][2]);
