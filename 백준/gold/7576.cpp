@@ -1,71 +1,53 @@
-#include <iostream>
-#include <queue>
-
-#define MAX_SIZE 1000 + 1
-
+#include <bits/stdc++.h>
 using namespace std;
 
-struct tomato {
-    int y, x;
-};
+int n, m;
+int grid[1004][1004];
+const int dy[] = {-1, 0, 1, 0}, dx[] = {0, 1, 0, -1};
 
-queue<tomato> q;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    queue<pair<int, int>> q;
 
-// 우,하,좌,상
-int dx[4] = { 1, 0, -1, 0 };
-int dy[4] = { 0, 1, 0 , -1 };
+    cin >> m >> n;
 
-int n, m, result = 0;
-int graph[MAX_SIZE][MAX_SIZE];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> grid[i][j];
+            if (grid[i][j] == 1) {
+                q.push({i, j});
+            }
+        }
+    }
 
-bool IsInside(int ny, int nx) {
-    return (0 <= nx && 0 <= ny && nx < m && ny < n);
-}
-
-void bfs() {
     while (!q.empty()) {
-        int y = q.front().y;
-        int x = q.front().x;
+        auto [y, x] = q.front();
         q.pop();
 
         for (int i = 0; i < 4; i++) {
             int ny = y + dy[i];
             int nx = x + dx[i];
 
-            if (IsInside(ny,nx) == 1 && graph[ny][nx] == 0) {
-                graph[ny][nx] = graph[y][x] + 1;
-                q.push({ ny, nx });
-            }
-        }
-    }
-}
-
-int main() {
-    scanf("%d %d", &m, &n);
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &graph[i][j]);
-            if (graph[i][j] == 1) { // 익은토마토(1) -> 큐
-                q.push({ i, j });
+            if (ny >= 0 && ny < n && nx >= 0 && nx < m && grid[ny][nx] == 0) {
+                grid[ny][nx] = grid[y][x] + 1;
+                q.push({ny, nx});
             }
         }
     }
 
-    bfs();
+    int maxVal = 0;
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            // 익지않은 토마토(0)가 존재할 경우
-            if (graph[i][j] == 0) {
-                printf("-1\n");
+            if (grid[i][j] == 0) {
+                cout << -1 << endl;
                 return 0;
             }
-            if (result < graph[i][j]) {
-                result = graph[i][j];
-            }
+            maxVal = max(maxVal, grid[i][j]);
         }
     }
-    printf("%d\n", result-1);
+
+    cout << maxVal - 1 << endl;
     return 0;
 }
