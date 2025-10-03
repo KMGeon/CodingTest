@@ -34,14 +34,17 @@ int main(){
                 int nx = x + dx[i];
                 if(ny < 0 || ny >= n || nx < 0 || nx >= m || visited[ny][nx]) continue;
                 visited[ny][nx] = cnt;
+                // 친구이면 잠깐 멈춰서 0만들고 temp에 넣기
                 if(a[ny][nx] != '0'){
                     a[ny][nx] = '0';
                     temp.push(1000 * ny + nx);
                 }
+                // 빈 공간이면 계속 이동
                 else q.push(1000 * ny + nx);
             }
         }
         q = temp;
     }
     printf("%d\n", visited[y2][x2]);
+    cout << cnt;
 }
