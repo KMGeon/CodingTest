@@ -1,31 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n,m;
-char grid[24][24], visited[24];
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    cin >> n >> m;
-    for (int i=0; i<n;i++) {
-        for (int j=0; j<m; j++) {
-            cin >> grid[i][j];
-        }
+    int s = 18;
+
+    int idx = 1;
+
+    cout << bitset<8>(s) << endl;
+    if(s & (1 << idx)) {
+        cout << "해당 idx : " << idx << "가 켜져있습니다.\n";
+    } else {
+        cout << "해당 idx : " << idx << "가 꺼져있습니다.\n";
     }
-
-    for (int i=0; i<n;i++) {
-        for (int j=0; j<m; j++) {
-            cout << grid[i][j];
-        }
-        cout << endl;
-    }
-
-    visited[0] = 1;
-
-
 
 
     return 0;
