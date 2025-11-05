@@ -1,22 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+const int n = 4;
+string a[n] = {"사과", "딸기", "포도", "배"};
 
-    int s = 18;
-
-    int idx = 1;
-
-    cout << bitset<8>(s) << endl;
-    if(s & (1 << idx)) {
-        cout << "해당 idx : " << idx << "가 켜져있습니다.\n";
-    } else {
-        cout << "해당 idx : " << idx << "가 꺼져있습니다.\n";
+void go(int num) {
+    string ret = "";
+    for (int i = 0; i < n; i++) {
+        if (num & (1 << i)) ret += a[i] + ", ";
     }
+    cout << ret << endl;
+    return;
+}
 
-
+int main() {
+    for (int i=1; i<n; i++) {
+        go(1 | (1 <<i));
+    }
     return 0;
 }
