@@ -11,8 +11,6 @@ int main() {
     }
     cin >> x;
 
-    // 1 , 2, 3, 4 ,5
-    // 6
     sort(a.begin(), a.end());
     int l = 0, r = n - 1;
     while (l < r) {
