@@ -1,22 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-int from, to, n, idx = 0, ret = 1;
-int main(){
+
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
+
+    int n;
     cin >> n;
-    vector<pair<int, int>> v;
-    for(int i = 0; i < n; i++){
-        cin >> from >> to;
-        v.push_back({to, from});
+
+    // (끝나는 시간, 시작 시간) 순서로 저장 -> 자동으로 끝나는 시간 우선 정렬됨
+    vector<pair<int, int>> meetings;
+
+    for (int i = 0; i < n; i++) {
+        int start, end;
+        cin >> start >> end;
+        meetings.push_back({end, start}); // (끝, 시작) 순서 주의!
     }
-    sort(v.begin(), v.end());
-    from = v[0].second;
-    to = v[0].first;
-    for(int i = 1; i < n; i++){
-        if(v[i].second < to) continue;
-        from = v[i].second; to = v[i].first;ret++;
+
+    sort(meetings.begin(), meetings.end());
+    int count = 1 , select = 0;
+
+    for (int i=0; i<meetings.size(); i++) {
+        if (i==0) continue;
+        if (meetings[i].second >= meetings[select].first) {
+            select = i;
+            count ++;
+        }
     }
-    cout << ret << '\n';
+
+
+    cout << count << '\n';
+
     return 0;
 }
