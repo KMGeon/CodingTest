@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -10,11 +11,11 @@ int main() {
     cin >> n >> k;
 
     vector<pair<int, int>> jewels(n);
+    vector<int> bags(k);
     for (int i = 0; i < n; i++) {
         cin >> jewels[i].first >> jewels[i].second;
     }
 
-    vector<int> bags(k);
     for (int i = 0; i < k; i++) {
         cin >> bags[i];
     }
