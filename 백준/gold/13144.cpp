@@ -39,3 +39,7 @@ int main() {
     cout << answer << '\n';
     return 0;
 }
+
+// # 경우의 수  => long long  박자
+// 등비수열 합: (n)*(n+1) /2 = 4*5/2 = 10
+// 10 = 17/2
