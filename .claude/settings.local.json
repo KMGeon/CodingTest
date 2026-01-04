@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(cmake:*)",
@@ -10,7 +14,10 @@
       "Bash(echo:*)",
       "Bash(./main)",
       "Bash(./bfs_test)",
-      "WebFetch(domain:www.acmicpc.net)"
+      "WebFetch(domain:www.acmicpc.net)",
+      "Bash(git reset:*)",
+      "Bash(git push)",
+      "Bash(cat:*)"
     ]
   },
   "outputStyle": "Learning"
